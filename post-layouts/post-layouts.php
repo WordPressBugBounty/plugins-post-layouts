@@ -6,7 +6,7 @@
  * Description: A beautiful post layouts block to showcase your posts in grid and list layout with multiple templates availability.
  * Author: Techeshta
  * Author URI: https://www.techeshta.com
- * Version: 1.2.8
+ * Version: 1.2.9
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
