@@ -5,9 +5,9 @@ Plugin URI: https://wordpress.org/plugins/post-layouts/
 Contributors: techeshta, alkesh7, vastarpara
 Tags: post blocks, post layouts, post templates, grid layout, list layout
 Requires at least: 4.8
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPL2+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -133,6 +133,11 @@ Please reach out via the official support forum on WordPress.org.
 4. List Layout - Template 1 (Front-end output)
 
 == Changelog ==
+
+= 1.2.10 =
+Release Date: April 22nd, 2025
+
+* Updated: Latest WordPress 6.8 compatibility Check
 
 = 1.2.9 =
 Release Date: November 22nd, 2024
