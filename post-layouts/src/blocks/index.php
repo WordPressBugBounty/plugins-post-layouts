@@ -10,6 +10,9 @@
 /**
  * Renders the post block on server.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 function post_layouts_block_render_block_core_latest_posts($attributes) {
     $list_items_markup = $post_thumb_id = $equalheight = '';
 
@@ -532,7 +535,8 @@ function pl_list_layout1($attributes) {
             // Get the post title
             $title = get_the_title($post_id);
             if (!$title) {
-                $title = __('Untitled');
+                $title = __('Untitled' , 'post-layouts');
+                   $title = __('Untitled', 'post-layouts');
             }
 
             //Get title tag
@@ -658,7 +662,7 @@ function pl_list_layout2($attributes) {
             // Get the post title
             $title = get_the_title($post_id);
             if (!$title) {
-                $title = __('Untitled');
+                $title = __('Untitled' , 'post-layouts');
             }
 
             $title_tag = $attributes['titleTag'];
@@ -763,7 +767,7 @@ function pl_list_layout3($attributes) {
             // Get the post title
             $title = get_the_title($post_id);
             if (!$title) {
-                $title = __('Untitled');
+                $title = __('Untitled' , 'post-layouts');
             }
 
             $title_tag = $attributes['titleTag'];

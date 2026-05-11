@@ -3,11 +3,11 @@ Author URI: https://www.techeshta.com
 Donate link: https://www.paypal.me/techeshta
 Plugin URI: https://wordpress.org/plugins/post-layouts/
 Contributors: techeshta, alkesh7, vastarpara
-Tags: post blocks, post layouts, post templates, grid layout, list layout
+Tags: post layouts, grid layout, list layout, post blocks, post templates
 Requires at least: 4.8
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 1.2.10
+Stable tag: 1.2.11
 License: GPL2+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -15,19 +15,17 @@ A beautiful post layouts block to showcase your posts in grid and list layout wi
 
 == Description ==
 
-Post Layouts for Gutenberg is a Gutenberg add-on with a bunch of additional styles for post layouts. That contains unique templates for presentation. It is a standalone Gutenberg solution to give wow design possibilities for your blog posts with a clean design and fully responsive layout.
+Post Layouts for Gutenberg is a powerful WordPress addon with a bunch of additional styles for Post Layouts and Post Templates. It contains unique Post Templates for presentation. It is a standalone solution to give wow design possibilities for your blog Post Blocks with a clean design and fully responsive Grid Layout and List Layout.
 
 Post Layouts for Gutenberg makes your post section more intuitive without any coding skill. It's easy to manage for beginners to website developers.
 
-If you are looking for different post styles every day, then Post Layouts Pro for Gutenberg is the best solution for you. That, you have never seen above.
-
-You can say that <strong>Post Layouts</strong> will be your Ultimate Post Layouts Builder for the new Gutenberg Editor.
+If you are looking for different Post Layouts every day, then Post Layouts for Gutenberg is the best solution you have never seen before. You can say that Post Layouts for Gutenberg will be your Ultimate Post Layouts Builder for the WordPress Block Editor.
 
 <strong>[Live Demo](https://gutenberg.techeshta.com/post-layouts-for-gutenberg/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=postlayouts)</strong> | <strong>[Documentation](https://www.techeshta.com/docs/post-layouts-for-gutenberg/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=postlayoutsforgutenberg)</strong>
 
 ### Where is the Post Layouts Plugin Most Useful?
 
-Post Layouts plugin useful for all WordPress websites. It is a perfect solution to showcase your posts with different styles every next day. That showcase as a blog page, blog section at the home page, or a post with a filter like category wise, author wise, etc.
+Post Layouts for Gutenberg plugin is useful for all WordPress websites. It is a perfect solution to showcase your Post Blocks with different Post Templates and Post Layouts every next day, as a blog page, blog section at the home page, or a post with a filter like category wise, author wise, etc.
 
 Below is one small list for which purposes you can start using the Post Layouts for Gutenberg plugin.
 
@@ -41,9 +39,9 @@ Below is one small list for which purposes you can start using the Post Layouts 
 
 ### Why Choose Post Layouts for your Gutenberg Project?
 
-We carefully researched over minimum requirements of any blog page presentation and then created a list of options to provide that flexibility to new Gutenberg users. Yes, it's free for everyone, and you can see the instant result with the Gutenberg Editor while updating your changes with the options.
+We carefully researched the minimum requirements of any blog page presentation and then created a list of options to provide that flexibility to new WordPress block editor users. Yes, it's free for everyone and you can see the instant result while updating your changes with the Post Layouts for Gutenberg options.
 
-We provided all possible options with this Post Layouts for the Gutenberg plugin. So, from Gutenberg's beginner-level user to any experts, bloggers and freelancers can use this standalone solution to show WordPress posts in different styles.
+We provided all possible options with Post Layouts for Gutenberg. So, from beginner-level users to any experts, bloggers, and freelancers can use this standalone solution to show WordPress Post Blocks in different Post Templates and Post Layouts styles.
 
 ### Features of Post Layouts for Gutenberg
 
@@ -134,6 +132,12 @@ Please reach out via the official support forum on WordPress.org.
 
 == Changelog ==
 
+= 1.2.11 =
+Release Date: May 11th, 2026
+
+* Updated: Latest WordPress 6.9 compatibility Check
+* Fixed: Improved overall plugin security
+
 = 1.2.10 =
 Release Date: April 22nd, 2025
 
@@ -152,7 +156,7 @@ Release Date: August 6th, 2024
 = 1.2.7 =
 Release Date: Ocotber 5th, 2023
 
-* [Updated] Latest WordPress 6.3.1 compatibility Check
+* Updated: Latest WordPress 6.3.1 compatibility Check
 
 = 1.2.6 =
 Release Date: December 8th, 2022
@@ -162,7 +166,7 @@ Release Date: December 8th, 2022
 = 1.2.5 =
 Release Date: May 25th, 2022
 
-* [Updated] Latest WordPress 6.0 compatibility Check
+* Updated: Latest WordPress 6.0 compatibility Check
 
 = 1.2.4 =
 Release Date: February 2nd, 2022

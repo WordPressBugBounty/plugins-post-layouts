@@ -1,5 +1,8 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * PL Admin.
  *
@@ -46,7 +49,8 @@ if (!class_exists('PL_Admin')) {
             // Styles.
             wp_enqueue_style('PL-admin-settings', PL_URL . 'admin/assets/admin-menu-settings.css', array(), PL_VER);
             // Script.
-            wp_enqueue_script('PL-admin-settings', PL_URL . 'admin/assets/admin-menu-settings.js', array('jquery', 'wp-util', 'updates'), PL_VER);
+            wp_enqueue_script('PL-admin-settings', PL_URL . 'admin/assets/admin-menu-settings.js', array('jquery', 'wp-util', 'updates'), PL_VER ,  true) ;
+            // FIX: Add $in_footer = true
 
             $localize = array(
                 'ajax_url' => admin_url('admin-ajax.php'),

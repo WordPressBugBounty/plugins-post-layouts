@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * Blocks Initializer
  *
@@ -60,7 +64,9 @@ add_action('enqueue_block_assets', 'post_layouts_block_assets');
 function post_layouts_block_editor_assets() {
 
     // Load the compiled blocks into the editor
-    wp_enqueue_script('pl-block-js', plugins_url('/dist/blocks.build.js', dirname(__FILE__)), array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-api'), filemtime(plugin_dir_path(__FILE__) . 'blocks.build.js'));
+    wp_enqueue_script('pl-block-js', plugins_url('/dist/blocks.build.js', dirname(__FILE__)), array('wp-blocks', 'wp-i18n', 'wp-element',
+     'wp-editor', 'wp-api'), filemtime(plugin_dir_path(__FILE__) . 'blocks.build.js'), true);
+    // FIX 1: Add $in_footer = true
 
     // Load the compiled styles into the editor
     wp_enqueue_style('pl-block-editor-css', plugins_url('dist/blocks.editor.build.css', dirname(__FILE__)), array('wp-edit-blocks'), filemtime(plugin_dir_path(__FILE__) . 'blocks.editor.build.css'));

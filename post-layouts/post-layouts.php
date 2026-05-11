@@ -3,10 +3,10 @@
 /**
  * Plugin Name: Post Layouts for Gutenberg
  * Plugin URI: https://wordpress.org/plugins/post-layouts/
- * Description: A beautiful post layouts block to showcase your posts in grid and list layout with multiple templates availability.
+ * Description: Post Layouts for Gutenberg: Grid & List Layout Post Blocks with Post Templates.
  * Author: Techeshta
  * Author URI: https://www.techeshta.com
- * Version: 1.2.10
+ * Version: 1.2.11
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
@@ -15,6 +15,7 @@
 /**
  * Exit if accessed directly
  */
+
 if (!defined('ABSPATH')) {
     exit;
 }
