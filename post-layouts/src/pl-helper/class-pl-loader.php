@@ -49,8 +49,8 @@ if (!class_exists('PL_Loader')) {
          * @return void
          */
         public function loader() {
-            require( PL_DIR . 'src/pl-helper/class-pl-helper.php' );
-            require( PL_DIR . 'src/pl-helper/class-pl-core-plugin.php' );
+            require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-helper.php' );
+            require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-core-plugin.php' );
         }
 
     }

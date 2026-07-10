@@ -1,17 +1,17 @@
-=== Post Layouts for Gutenberg ===
+=== Post Layouts ===
 Author URI: https://www.techeshta.com
 Donate link: https://www.paypal.me/techeshta
 Plugin URI: https://wordpress.org/plugins/post-layouts/
 Contributors: techeshta, alkesh7, vastarpara
 Tags: post layouts, grid layout, list layout, post blocks, post templates
-Requires at least: 4.8
-Tested up to: 6.9
+Requires at least: 5.0
+Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 1.2.11
+Stable tag: 2.0.0
 License: GPL2+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
-A beautiful post layouts block to showcase your posts in grid and list layout with multiple templates availability.
+Responsive post layout block to display posts in flexible grid, list, and template layouts with featured images, post meta, and read-more controls.
 
 == Description ==
 
@@ -132,11 +132,13 @@ Please reach out via the official support forum on WordPress.org.
 
 == Changelog ==
 
-= 1.2.11 =
-Release Date: May 11th, 2026
+= 2.0.0 =
+Release Date: July 10th, 2026
 
-* Updated: Latest WordPress 6.9 compatibility Check
-* Fixed: Improved overall plugin security
+* Updated: Latest WordPress 7.0 compatibility check
+* Updated: Plugin version bumped for WP 7.0 support
+* Fixed: Removed duplicate translation loader and code quality improvements
+* Fixed: Improved query handling and REST field data safety
 
 = 1.2.10 =
 Release Date: April 22nd, 2025

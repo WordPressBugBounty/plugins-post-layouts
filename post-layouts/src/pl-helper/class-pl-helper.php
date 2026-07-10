@@ -71,8 +71,8 @@ if (!class_exists('PL_Helper')) {
          */
         public function __construct() {
 
-            require( PL_DIR . 'src/pl-helper/class-pl-config.php' );
-            require( PL_DIR . 'src/pl-helper/class-pl-block-helper.php' );
+            require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-config.php' );
+            require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-block-helper.php' );
 
             self::$block_list = PL_Config::get_block_attributes();
 

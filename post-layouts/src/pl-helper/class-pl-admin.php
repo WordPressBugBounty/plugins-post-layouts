@@ -47,10 +47,9 @@ if (!class_exists('PL_Admin')) {
         public static function styles_scripts() {
 
             // Styles.
-            wp_enqueue_style('PL-admin-settings', PL_URL . 'admin/assets/admin-menu-settings.css', array(), PL_VER);
+            wp_enqueue_style('PL-admin-settings', POST_LAYOUTS_URL . 'admin/assets/admin-menu-settings.css', array(), POST_LAYOUTS_VERSION);
             // Script.
-            wp_enqueue_script('PL-admin-settings', PL_URL . 'admin/assets/admin-menu-settings.js', array('jquery', 'wp-util', 'updates'), PL_VER ,  true) ;
-            // FIX: Add $in_footer = true
+            wp_enqueue_script('PL-admin-settings', POST_LAYOUTS_URL . 'admin/assets/admin-menu-settings.js', array('jquery', 'wp-util', 'updates'), POST_LAYOUTS_VERSION, true);
 
             $localize = array(
                 'ajax_url' => admin_url('admin-ajax.php'),

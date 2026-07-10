@@ -117,27 +117,26 @@ function post_layouts_get_category($post_id, $seprator) {
 
 function post_layouts_get_excerpt($post_id, $post_query, $attributes) {
 
+    $excerpt_data = '';
+
     if (isset($attributes['displayPostExcerpt']) && $attributes['displayPostExcerpt']) {
 
         $excerpt = apply_filters('the_excerpt', get_post_field('post_excerpt', $post_id, 'display'));
 
-        if (isset($attributes['wordsExcerpt']) && $attributes['wordsExcerpt']) {
-
-            $wordsExcerpt = $attributes['wordsExcerpt'];
-        } else {
-            $wordsExcerpt = 25;
+        $words_excerpt = 25;
+        if (isset($attributes['wordsExcerpt']) && intval($attributes['wordsExcerpt']) > 0) {
+            $words_excerpt = absint($attributes['wordsExcerpt']);
         }
 
-        if (empty($excerpt) && isset($attributes['wordsExcerpt'])) {
-
-            $excerpt = apply_filters('the_excerpt', wp_trim_words(get_the_content(), $wordsExcerpt));
+        if (empty($excerpt)) {
+            $excerpt = apply_filters('the_excerpt', wp_trim_words(get_post_field('post_content', $post_id), $words_excerpt));
         }
 
         if (!$excerpt) {
-            $excerpt = null;
+            $excerpt = '';
         }
 
-        $excerpt_data = wp_kses_post($excerpt_data ?? '');
+        $excerpt_data = wp_kses_post($excerpt);
     }
     return $excerpt_data;
 }
@@ -147,9 +146,11 @@ function post_layouts_get_excerpt($post_id, $post_query, $attributes) {
  */
 
 function post_layouts_get_author($post_id) {
+    $author_id = absint(get_post_field('post_author', $post_id));
+    $author_name = get_the_author_meta('display_name', $author_id);
+    $author_url = get_author_posts_url($author_id);
 
-    $list_items_markup = sprintf('<a href="%2$s">%1$s</a></span></span>', esc_html(get_the_author_meta('display_name', get_the_author_meta('ID'))), esc_html(get_author_posts_url(get_the_author_meta('ID')))
-    );
+    $list_items_markup = sprintf('<a href="%2$s">%1$s</a></span></span>', esc_html($author_name), esc_url($author_url));
     return $list_items_markup;
 }
 
@@ -158,13 +159,14 @@ function post_layouts_get_author($post_id) {
  */
 
 function post_layouts_get_tags($post_id, $tag_text) {
-    $tags_list = get_the_tag_list("", ", ", "", $post_id);
+    $tags_list = get_the_tag_list('', ', ', '', $post_id);
     $list_items_markup = '';
     if (!empty($tags_list)) {
-        if (!empty($tag_text))
-            $list_items_markup .= sprintf('<div class="pl-post-tags"><span class="link-label">%1$s </span> %2$s </div> ', $tag_text, $tags_list);
-        else
-            $list_items_markup .= sprintf('<div class="pl-post-tags"> %1$s </div> ', $tags_list);
+        if (!empty($tag_text)) {
+            $list_items_markup .= sprintf('<div class="pl-post-tags"><span class="link-label">%1$s </span> %2$s </div> ', esc_html($tag_text), wp_kses_post($tags_list));
+        } else {
+            $list_items_markup .= sprintf('<div class="pl-post-tags"> %1$s </div> ', wp_kses_post($tags_list));
+        }
     }
     return $list_items_markup;
 }
@@ -315,6 +317,8 @@ function pl_grid_layout1($attributes) {
             $list_items_markup .= "</div></article>\n";
         }
     }
+
+    wp_reset_postdata();
     return $list_items_markup;
 }
 
@@ -450,6 +454,8 @@ function pl_grid_layout2($attributes) {
             $list_items_markup .= "</div></article>";
         }
     }
+
+    wp_reset_postdata();
     return $list_items_markup;
 }
 
@@ -581,6 +587,8 @@ function pl_list_layout1($attributes) {
             $list_items_markup .= "</article>\n";
         }
     }
+
+    wp_reset_postdata();
     return $list_items_markup;
 }
 
@@ -852,6 +860,8 @@ function pl_list_layout3($attributes) {
             $list_items_markup .= "</article>\n";
         }
     }
+
+    wp_reset_postdata();
     return $list_items_markup;
 }
 
@@ -1233,14 +1243,14 @@ function post_layouts_block_get_image_src_square($object, $field_name, $request)
  * Get author info for the rest field
  */
 function post_layouts_block_get_author_info($object, $field_name, $request) {
+    $author_id = isset($object['author']) ? absint($object['author']) : 0;
 
-    // Get the author name
-    $author_data['display_name'] = get_the_author_meta('display_name', $object['author']);
+    // Get the author data.
+    $author_data = array(
+        'display_name' => get_the_author_meta('display_name', $author_id),
+        'author_link' => esc_url_raw(get_author_posts_url($author_id)),
+    );
 
-    // Get the author link
-    $author_data['author_link'] = get_author_posts_url($object['author']);
-
-    // Return the author data
     return $author_data;
 }
 
@@ -1248,55 +1258,51 @@ function post_layouts_block_get_author_info($object, $field_name, $request) {
  * Get category info for the rest field
  */
 function post_layouts_block_get_catgeory_info($object, $field_name, $request) {
-    $object['ID'] = '';
-    $categories_list = get_the_category_list(",", "", $object['ID']);
-    $cat_class = '';
+    $post_id = isset($object['id']) ? absint($object['id']) : (isset($object['ID']) ? absint($object['ID']) : 0);
+    $categories_list = get_the_category_list(',', ' ', $post_id);
 
-    $category_info = sprintf('%1$s', $categories_list);
-    // Return the category data
-    return $category_info;
+    return wp_kses_post($categories_list);
 }
 
 /**
  * Get tags info for the rest field
  */
 function post_layouts_block_get_tags_info($object, $field_name, $request) {
-    // Get the author name
-    $object['ID'] = '';
-    $tags_list = get_the_tag_list("", ", ", "", $object['ID']);
-    $tags_info = sprintf('%1$s', $tags_list);
-    // Return the tag data
-    return $tags_info;
+    $post_id = isset($object['id']) ? absint($object['id']) : (isset($object['ID']) ? absint($object['ID']) : 0);
+    $tags_list = get_the_tag_list('', ', ', '', $post_id);
+
+    return wp_kses_post($tags_list);
 }
 
 /**
  * Get excerpt info for the rest field
  */
 function post_layouts_grid_block_get_wordExcerpt($object, $field_name, $request) {
-    $object['ID'] = '';
+    $post_id = isset($object['id']) ? absint($object['id']) : (isset($object['ID']) ? absint($object['ID']) : 0);
 
-    $excerpt = apply_filters('the_excerpt', get_post_field('post_excerpt', $object['ID'], 'display'));
+    $excerpt = apply_filters('the_excerpt', get_post_field('post_excerpt', $post_id, 'display'));
 
     if (empty($excerpt)) {
-        $excerpt = apply_filters('the_excerpt', get_the_content($object['ID']));
+        $excerpt = apply_filters('the_excerpt', get_post_field('post_content', $post_id));
     }
 
     if (!$excerpt) {
-        $excerpt = null;
+        $excerpt = '';
     }
-    $list_items_markup = wp_kses_post($excerpt);
 
-    return $list_items_markup;
+    return wp_kses_post($excerpt);
 }
 
 /**
  * Get social share info for the rest field
  */
 function post_layouts_get_social_share_info($object, $field_name, $request) {
-    $object['ID'] = '';
-    $social_share_info = sprintf('<a data-share="facebook" href="https://www.facebook.com/sharer.php?u=%1$s" class="pl-facebook-share social-share-default pl-social-share" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>', get_the_permalink($object['ID']));
-    $social_share_info .= sprintf('<a data-share="twitter" href="https://twitter.com/share?url=%1$s" class="pl-twiiter-share social-share-default pl-social-share" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>', get_the_permalink($object['ID']));
-    $social_share_info .= sprintf('<a data-share="linkedin" href="https://www.linkedin.com/shareArticle?url=%1$s" class="pl-linkedin-share social-share-default pl-social-share" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>', get_the_permalink($object['ID']));
+    $post_id = isset($object['id']) ? absint($object['id']) : (isset($object['ID']) ? absint($object['ID']) : 0);
+    $permalink = esc_url(get_permalink($post_id));
+
+    $social_share_info = sprintf('<a data-share="facebook" href="https://www.facebook.com/sharer.php?u=%1$s" class="pl-facebook-share social-share-default pl-social-share" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>', $permalink);
+    $social_share_info .= sprintf('<a data-share="twitter" href="https://twitter.com/share?url=%1$s" class="pl-twitter-share social-share-default pl-social-share" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>', $permalink);
+    $social_share_info .= sprintf('<a data-share="linkedin" href="https://www.linkedin.com/shareArticle?url=%1$s" class="pl-linkedin-share social-share-default pl-social-share" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>', $permalink);
     return $social_share_info;
 }
 
@@ -1314,7 +1320,7 @@ function post_layouts_get_comment_info($object, $field_name, $request) {
     }
 }
 
-function remove_event_handlers($content) {
+function post_layouts_remove_event_handlers($content) {
     // Regular expression to match event handler attributes (onload, onclick, etc.)   
     $pattern = '/\s*on\w+="[^"]*"/i';
     $sanitized_content = preg_replace($pattern, '', $content);

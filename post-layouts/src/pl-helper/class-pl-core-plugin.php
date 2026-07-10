@@ -48,9 +48,9 @@ class PL_Core_Plugin {
      */
     private function includes() {
 
-        // require( PL_DIR . 'lib/notices/class-astra-notices.php' );
-        require( PL_DIR . 'src/pl-helper/class-pl-admin.php' );
-        require( PL_DIR . 'src/pl-helper/class-pl-init-blocks.php' );
+        // require( POST_LAYOUTS_DIR . 'lib/notices/class-astra-notices.php' );
+        require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-admin.php' );
+        require( POST_LAYOUTS_DIR . 'src/pl-helper/class-pl-init-blocks.php' );
     }
 
 }
