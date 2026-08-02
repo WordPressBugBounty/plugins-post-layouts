@@ -1,4 +1,4 @@
-=== Post Layouts ===
+=== Post Layouts for Gutenberg ===
 Author URI: https://www.techeshta.com
 Donate link: https://www.paypal.me/techeshta
 Plugin URI: https://wordpress.org/plugins/post-layouts/
